@@ -30,7 +30,7 @@ const handleTemplates = async (contentPath, templatePath, outputPath) => {
   const templateStat = await stat(templatePath);
 
   if (templateStat.isDirectory()) {
-    const templates = await glob(templatePath);
+    const templates = await glob(join(templatePath, "*"));
 
     templates.map(async (template) => {
       generate(
@@ -60,7 +60,7 @@ const handler = async (options) => {
 program
   .name("mkresume")
   .description("CLI to generate resume based on templates")
-  .version("0.1.2")
+  .version("0.1.3")
   .requiredOption("-c, --content <string>", "path to content file")
   .requiredOption("-t, --template <string>", "path to template file")
   .requiredOption("-o, --output <string>", "path to output file")
