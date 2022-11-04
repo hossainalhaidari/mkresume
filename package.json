@@ -1,6 +1,6 @@
 {
   "name": "mkresume",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI to generate resume based on templates",
   "author": "Hossain Alhaidari <dev@hossain.al> (https://hossain.al)",
   "homepage": "https://github.com/hossainalhaidari/mkresume",

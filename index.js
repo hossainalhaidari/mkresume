@@ -68,7 +68,7 @@ const handler = async (options) => {
 program
   .name("mkresume")
   .description("CLI to generate resume based on templates")
-  .version("0.1.0")
+  .version("0.1.1")
   .requiredOption("-c, --content <string>", "path to content file")
   .requiredOption("-t, --template <string>", "path to template file")
   .requiredOption("-o, --output <string>", "path to output file")
