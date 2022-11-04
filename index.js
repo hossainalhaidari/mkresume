@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 const { program } = require("commander");
-const { lstat, readFile, writeFile } = require("fs").promises;
+const { stat, readFile, writeFile } = require("fs").promises;
 const glob = require("glob-promise");
 const { load } = require("js-yaml");
+const { mdToPdf } = require("md-to-pdf");
 const { basename, extname, join } = require("path");
 const { render } = require("squirrelly");
 
@@ -26,14 +27,9 @@ const generate = async (contentPath, templatePath, outputPath) => {
 
 const handleTemplates = async (contentPath, templatePath, outputPath) => {
   const fileName = basename(contentPath, extname(contentPath));
-  const templateStat = await lstat(templatePath);
-  const outputStat = await lstat(outputPath);
+  const templateStat = await stat(templatePath);
 
   if (templateStat.isDirectory()) {
-    if (outputStat.isFile()) {
-      throw new Error("Output cannot be a file path!");
-    }
-
     const templates = await glob(templatePath);
 
     templates.map(async (template) => {
@@ -44,10 +40,6 @@ const handleTemplates = async (contentPath, templatePath, outputPath) => {
       );
     });
   } else {
-    if (outputStat.isDirectory()) {
-      throw new Error("Output cannot be a directory path!");
-    }
-
     generate(contentPath, templatePath, outputPath);
   }
 };
@@ -55,7 +47,7 @@ const handleTemplates = async (contentPath, templatePath, outputPath) => {
 const handler = async (options) => {
   const { content, template, output } = options;
 
-  const contentStat = await lstat(content);
+  const contentStat = await stat(content);
 
   if (contentStat.isDirectory()) {
     const files = await glob(join(content, "*.yaml"));
@@ -68,7 +60,7 @@ const handler = async (options) => {
 program
   .name("mkresume")
   .description("CLI to generate resume based on templates")
-  .version("0.1.1")
+  .version("0.1.2")
   .requiredOption("-c, --content <string>", "path to content file")
   .requiredOption("-t, --template <string>", "path to template file")
   .requiredOption("-o, --output <string>", "path to output file")
