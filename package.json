@@ -1,0 +1,23 @@
+{
+  "name": "mkresume",
+  "version": "0.1.0",
+  "description": "CLI to generate resume based on templates",
+  "author": "Hossain Alhaidari <dev@hossain.al>",
+  "license": "MIT",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "commander": "^9.4.1",
+    "glob": "^8.0.3",
+    "glob-promise": "^5.0.0",
+    "js-yaml": "^4.1.0",
+    "squirrelly": "^8.0.8"
+  },
+  "keywords": [
+    "mkresume",
+    "resume",
+    "generator"
+  ]
+}
