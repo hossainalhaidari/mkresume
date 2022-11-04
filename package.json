@@ -2,11 +2,12 @@
   "name": "mkresume",
   "version": "0.1.0",
   "description": "CLI to generate resume based on templates",
-  "author": "Hossain Alhaidari <dev@hossain.al>",
+  "author": "Hossain Alhaidari <dev@hossain.al> (https://hossain.al)",
+  "homepage": "https://github.com/hossainalhaidari/mkresume",
   "license": "MIT",
-  "main": "app.js",
+  "bin": "./index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "commander": "^9.4.1",
@@ -19,5 +20,9 @@
     "mkresume",
     "resume",
     "generator"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hossainalhaidari/mkresume"
+  }
 }
